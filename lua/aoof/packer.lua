@@ -25,7 +25,7 @@ return require('packer').startup(function(use)
         end
     }
 
-    use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' } }
+    use { 'nvim-treesitter/nvim-treesitter', as = 'treesitter', { run = ':TSUpdate' } }
     use { 'nvim-treesitter/playground' }
     use { 'theprimeagen/harpoon' }
     use { 'mbbill/undotree' }
@@ -36,4 +36,9 @@ return require('packer').startup(function(use)
     use({'hrsh7th/cmp-nvim-lsp'})
     use({'williamboman/mason.nvim'})
     use({'williamboman/mason-lspconfig.nvim'})
+    use { 'andweeb/presence.nvim' }
+    use { 'L3MON4D3/LuaSnip' }
+    use { 'saadparwaiz1/cmp_luasnip' }
+    use { 'rafamadriz/friendly-snippets' }
+    use { 'github/copilot.vim' }
 end)
