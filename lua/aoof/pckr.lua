@@ -31,5 +31,6 @@ pckr.add {
   'saadparwaiz1/cmp_luasnip',
   'rafamadriz/friendly-snippets',
   'github/copilot.vim',
-  'folke/tokyonight.nvim'
+  'folke/tokyonight.nvim',
+  'wakatime/vim-wakatime'
 }
