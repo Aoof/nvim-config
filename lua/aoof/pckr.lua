@@ -1,13 +1,13 @@
 -- Load plugins using pckr.nvim
 local function bootstrap_pckr()
-  local path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
-  if not (vim.uv or vim.loop).fs_stat(path) then
-    vim.fn.system({ 'git',
-'clone',
-'--filter=blob:none',
-'https://github.com/lewis6991/pckr.nvim', path })
-  end
-  vim.opt.rtp:prepend(path)
+    local path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+    if not (vim.uv or vim.loop).fs_stat(path) then
+        vim.fn.system({ 'git',
+            'clone',
+            '--filter=blob:none',
+            'https://github.com/lewis6991/pckr.nvim', path })
+    end
+    vim.opt.rtp:prepend(path)
 end
 
 bootstrap_pckr()
