@@ -1,4 +1,2 @@
-require("aoof")
-
-vim.opt.termguicolors = true
-vim.cmd('colorscheme tokyonight')
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
