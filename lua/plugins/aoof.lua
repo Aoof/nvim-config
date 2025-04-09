@@ -1,0 +1,16 @@
+return {
+  { "nvim-lua/plenary.nvim", lazy = false },
+  { "nvim-telescope/telescope.nvim", tag = "0.1.8", requires = { "nvim-lua/plenary.nvim" }, lazy = false },
+  { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate", lazy = false },
+  { "ThePrimeagen/harpoon", branch = "harpoon2", requires = { { "nvim-lua/plenary.nvim" } }, lazy = false },
+  { "nvim-treesitter/playground", lazy = false },
+  { "mbbill/undotree", lazy = false },
+  { "tpope/vim-fugitive", lazy = false },
+  { "neovim/nvim-lspconfig", lazy = false },
+  { "williamboman/mason.nvim", lazy = false },
+  { "williamboman/mason-lspconfig.nvim", lazy = false },
+  { "rafamadriz/friendly-snippets", lazy = false },
+  { "github/copilot.vim", lazy = false },
+  { "folke/tokyonight.nvim", lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
+}
