@@ -40,9 +40,9 @@ vim.pack.add({
     -- manager, npm, pip, cargo, etc. — Mason is no longer used).
     "https://github.com/neovim/nvim-lspconfig",
 
-    -- AI completion (runs alongside native LSP completion)
-    "https://github.com/github/copilot.vim",
-
     -- Time tracking
     "https://github.com/wakatime/vim-wakatime",
+
+    -- Gruvbox theme
+    "https://github.com/markvincze/panda-vim",
 })

@@ -8,6 +8,7 @@ require("aoof.config.treesitter")
 require("aoof.config.harpoon")
 require("aoof.config.presence")
 require("aoof.config.statusline")
+require("aoof.config.godotserver")
 require("aoof.config.lsp")  -- last: needs lspconfig + attach hooks registered
 
 require("aoof.keymaps")

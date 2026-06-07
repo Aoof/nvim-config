@@ -32,8 +32,10 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 -- Disable accidental Ex mode entry
 vim.keymap.set("n", "Q", "<nop>")
 
--- tmux sessionizer (Linux/macOS with tmux)
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- tmux sessionizer (Linux/macOS only)
+if vim.fn.has("win32") == 0 and vim.fn.executable("tmux") == 1 then
+    vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+end
 
 -- Format buffer via LSP
 vim.keymap.set("n", "<leader>f", function()
@@ -49,8 +51,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Project-wide substitution for word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Make current file executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+-- Make current file executable (Unix only)
+if vim.fn.has("win32") == 0 then
+    vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+end
 
 -- Go: insert error-return boilerplate below cursor
 vim.keymap.set(

@@ -73,6 +73,17 @@ vim.lsp.config("lua_ls", {
     },
 })
 
+-- GDScript: connect to Godot's built-in LSP server over TCP.
+-- The default lspconfig cmd uses `nc` (netcat) which is unavailable on Windows.
+-- Godot must be running with the project open for this to work.
+vim.lsp.config("gdscript", {
+    cmd = vim.lsp.rpc.connect("127.0.0.1", 6005),
+    filetypes = { "gd", "gdscript", "gdscript3" },
+    root_dir = function(bufnr)
+        return vim.fs.root(bufnr, "project.godot")
+    end,
+})
+
 -- Language servers.
 -- nvim-lspconfig provides the default cmd/filetypes/root_dir for each.
 -- Each server must be installed on your system PATH — install via npm, pip,
@@ -97,4 +108,5 @@ vim.lsp.enable({
     "gleam",          -- Gleam
     "lua_ls",         -- Lua
     "rust_analyzer",  -- Rust
+    "gdscript",
 })
