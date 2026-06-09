@@ -31,4 +31,6 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 
+vim.opt.completeopt = {"menu", "menuone", "noselect"}
+
 vim.cmd.colorscheme("panda")

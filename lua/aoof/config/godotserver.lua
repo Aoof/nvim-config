@@ -1,7 +1,8 @@
-local cwd = vim.fn.getcwd()
+local GODOT_PORT = 6004
 
 -- Search cwd and its parent for a project.godot file.
 local function find_godot_root()
+    local cwd = vim.fn.getcwd()
     local candidates = {
         cwd,
         vim.fn.fnamemodify(cwd, ":h"),
@@ -13,29 +14,28 @@ local function find_godot_root()
     end
 end
 
-local project_root = find_godot_root()
-
-if project_root then
-    local pipe_path
-    if vim.fn.has("win32") == 1 then
-        -- Windows named pipes cannot contain path separators.
-        -- Neovim will create \\.\.pipe\<name> from a bare name.
-        local name = project_root:gsub("[/\\:]+", "-"):gsub("^%-+", "")
-        pipe_path = "godot-" .. name
-    else
-        pipe_path = project_root .. "/server.pipe"
-    end
+local function start_godot_server(port)
+    port = port or GODOT_PORT
+    local addr = "127.0.0.1:" .. port
     -- Only start a new server if one is not already listening on this address.
     local existing = vim.fn.serverlist()
-    local already_running = false
     for _, s in ipairs(existing) do
-        if s == pipe_path then
-            already_running = true
-            break
+        if s == addr then
+            vim.notify("Godot server already running on " .. addr, vim.log.levels.INFO)
+            return
         end
     end
-    if not already_running then
-        vim.fn.serverstart(pipe_path)
-    end
+    vim.fn.serverstart(addr)
+    vim.notify("Godot server started on " .. addr, vim.log.levels.INFO)
 end
+
+-- Auto-start when inside a Godot project.
+if find_godot_root() then
+    start_godot_server()
+end
+
+-- Keybind to manually start the server (<leader>gs).
+vim.keymap.set("n", "<leader>gs", function()
+    start_godot_server()
+end, { desc = "Start Godot LSP server on port " .. GODOT_PORT })
 

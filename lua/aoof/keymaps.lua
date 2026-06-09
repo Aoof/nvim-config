@@ -123,3 +123,33 @@ vim.keymap.set("n", "<A-h>", "<C-w>h")
 vim.keymap.set("n", "<A-j>", "<C-w>j")
 vim.keymap.set("n", "<A-k>", "<C-w>k")
 vim.keymap.set("n", "<A-l>", "<C-w>l")
+
+-- Buffer navigation
+vim.keymap.set("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })
+vim.keymap.set("n", "<leader>bp", "<cmd>bprevious<CR>", { desc = "Previous buffer" })
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "Delete buffer" })
+vim.keymap.set("n", "<leader>bl", "<cmd>buffers<CR>", { desc = "List buffers" })
+
+-- Tab management
+vim.keymap.set("n", "<leader>tn", "<cmd>tabnew<CR>", { desc = "New tab" })
+vim.keymap.set("n", "<leader>to", "<cmd>tabonly<CR>", { desc = "Only tab" })
+vim.keymap.set("n", "<leader>td", "<cmd>tabclose<CR>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>tl", "<cmd>tabnext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<leader>th", "<cmd>tabprevious<CR>", { desc = "Previous tab" })
+
+vim.keymap.set("n", "<leader>tt", function()
+    vim.cmd("split")
+    if vim.fn.has("win32") == 1 then
+        vim.cmd("terminal powershell")
+    else
+        vim.cmd("terminal")
+    end
+end, { desc = "Open terminal" })
+
+-- Window / split management
+vim.keymap.set("n", "<leader>ws", "<cmd>split<CR>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>wv", "<cmd>vsplit<CR>", { desc = "Vertical split" })
+vim.keymap.set("n", "<leader>wd", "<cmd>close<CR>", { desc = "Close window" })
+vim.keymap.set("n", "<leader>wo", "<cmd>only<CR>", { desc = "Only window" })
+
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
