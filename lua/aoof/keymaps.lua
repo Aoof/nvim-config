@@ -153,3 +153,6 @@ vim.keymap.set("n", "<leader>wd", "<cmd>close<CR>", { desc = "Close window" })
 vim.keymap.set("n", "<leader>wo", "<cmd>only<CR>", { desc = "Only window" })
 
 vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })

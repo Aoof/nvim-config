@@ -3,7 +3,7 @@ if not ok then return end
 
 configs.setup({
     ensure_installed = {
-        "javascript", "typescript", "tsx",
+        "svelte", "javascript", "typescript", "tsx",
         "c", "cpp",
         "lua", "vim", "vimdoc", "query",
         "markdown", "markdown_inline",
