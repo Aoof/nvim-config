@@ -1,48 +1,69 @@
--- Native plugin management via vim.pack (Neovim 0.12+).
--- Run :packupdate  to update all plugins (lowercase, all one word).
--- Run :packdel <name> to remove a plugin from disk after removing it here.
-if not vim.pack then
-    vim.notify(
-        "vim.pack not found — upgrade to Neovim 0.12+",
-        vim.log.levels.ERROR
-    )
-    return
-end
-
-vim.pack.add({
+return {
     -- Shared utility library (required by telescope and harpoon)
-    "https://github.com/nvim-lua/plenary.nvim",
+    "nvim-lua/plenary.nvim",
 
     -- Fuzzy finder: files, grep, git files, buffers, help
-    "https://github.com/nvim-telescope/telescope.nvim",
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("aoof.config.telescope")
+        end,
+    },
 
     -- Syntax highlighting and AST parsing
-    "https://github.com/nvim-treesitter/nvim-treesitter",
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("aoof.config.treesitter")
+        end,
+    },
 
     -- File navigation: bookmark and quick-jump between files
     {
-        src     = "https://github.com/ThePrimeagen/harpoon",
-        version = "harpoon2",
-        name    = "harpoon",
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("aoof.config.harpoon")
+        end,
     },
 
     -- Undo history visualization
-    "https://github.com/mbbill/undotree",
+    "mbbill/undotree",
 
     -- Git integration
-    "https://github.com/tpope/vim-fugitive",
+    "tpope/vim-fugitive",
 
     -- Discord Rich Presence
-    "https://github.com/andweeb/presence.nvim",
+    {
+        "andweeb/presence.nvim",
+        config = function()
+            require("aoof.config.presence")
+        end,
+    },
 
     -- LSP server configurations and root-dir detection
     -- Servers must be installed on the system PATH (use your OS package
-    -- manager, npm, pip, cargo, etc. — Mason is no longer used).
-    "https://github.com/neovim/nvim-lspconfig",
+    -- manager, npm, pip, cargo, etc. — Mason is not used).
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            require("aoof.config.lsp")
+        end,
+    },
 
     -- Time tracking
-    "https://github.com/wakatime/vim-wakatime",
+    "wakatime/vim-wakatime",
 
-    -- Gruvbox theme
-    "https://github.com/markvincze/panda-vim",
-})
+    -- Panda theme
+    {
+        "markvincze/panda-vim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("panda")
+        end,
+    },
+}

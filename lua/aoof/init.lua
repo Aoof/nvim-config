@@ -1,14 +1,9 @@
--- Load order is intentional: options first, then plugins, then per-plugin
--- config (all plugins are loaded by vim.pack.add before these run), then keymaps.
+-- Load order is intentional: options first, then lazy-managed plugins, then
+-- general keymaps and non-plugin config.
 require("aoof.options")
-require("aoof.plugins")
+require("aoof.lazy")
 require("aoof.keymaps")
 
-require("aoof.config.telescope")
-require("aoof.config.treesitter")
-require("aoof.config.harpoon")
-require("aoof.config.presence")
 require("aoof.config.statusline")
 require("aoof.config.godotserver")
-require("aoof.config.lsp")  -- last: needs lspconfig + attach hooks registered
 
