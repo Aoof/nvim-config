@@ -94,7 +94,6 @@ vim.lsp.enable({
     "jsonls",         -- JSON
     "marksman",       -- Markdown
     "tailwindcss",    -- Tailwind CSS
-    "emmet_ls",       -- Emmet
     "cssls",          -- CSS / SCSS / LESS
     "html",           -- HTML
     "eslint",         -- ESLint
@@ -105,7 +104,6 @@ vim.lsp.enable({
     "clangd",         -- C / C++
     "bashls",         -- Bash
     "ast_grep",       -- Multi-language structural search/rewrite
-    "gleam",          -- Gleam
     "lua_ls",         -- Lua
     "rust_analyzer",  -- Rust
     "gdscript",

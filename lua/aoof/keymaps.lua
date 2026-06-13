@@ -56,13 +56,6 @@ if vim.fn.has("win32") == 0 then
     vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 end
 
--- Go: insert error-return boilerplate below cursor
-vim.keymap.set(
-    "n",
-    "<leader>ee",
-    "oif err != nil {<CR>}<Esc>Oreturn err<Esc>"
-)
-
 -- Open plugin list (cross-platform via stdpath)
 vim.keymap.set("n", "<leader>vpp", function()
     vim.cmd.edit(vim.fn.stdpath("config") .. "/lua/aoof/plugins.lua")

@@ -26,7 +26,6 @@ if ok_mason_lspconfig then
             "clangd",
             "bashls",
             "ast_grep",
-            "gleam",
             "lua_ls",
             "rust_analyzer",
         },
