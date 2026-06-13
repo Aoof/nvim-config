@@ -127,10 +127,21 @@ return {
     -- Time tracking
     "wakatime/vim-wakatime",
 
+    -- Utilities
     {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
         opts = { }
-    }
+    },
+
+    -- Theme
+    {
+        "scottmckendry/cyberdream.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd.colorscheme("cyberdream")
+        end,
+    },
 }

@@ -27,6 +27,7 @@ if ok_mason_lspconfig then
             "bashls",
             "ast_grep",
             "lua_ls",
+            "svelte",
             "rust_analyzer",
         },
         -- LSP clients are enabled explicitly in aoof.config.lsp.

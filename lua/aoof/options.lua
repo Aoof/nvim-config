@@ -34,5 +34,3 @@ vim.opt.colorcolumn = "80"
 vim.opt.completeopt = {"menu", "menuone", "noselect"}
 
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-
-vim.cmd.colorscheme("habamax")

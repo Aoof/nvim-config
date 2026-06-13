@@ -107,4 +107,5 @@ vim.lsp.enable({
     "lua_ls",         -- Lua
     "rust_analyzer",  -- Rust
     "gdscript",
+    "svelte",
 })
