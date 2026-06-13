@@ -1,6 +1,9 @@
 return {
-    -- Shared utility library (required by telescope and harpoon)
+    -- Shared utility library (required by telescope, harpoon, and other plugins)
     "nvim-lua/plenary.nvim",
+
+    -- File and plugin icons
+    "nvim-tree/nvim-web-devicons",
 
     -- Fuzzy finder: files, grep, git files, buffers, help
     {
@@ -36,6 +39,55 @@ return {
     -- Git integration
     "tpope/vim-fugitive",
 
+    -- Git signs and hunk actions
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("aoof.config.gitsigns")
+        end,
+    },
+
+    -- File explorer
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("aoof.config.neotree")
+        end,
+    },
+
+    -- Keymap discovery
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("aoof.config.which-key")
+        end,
+    },
+
+    -- Diagnostics, symbols, references, quickfix, and location lists
+    {
+        "folke/trouble.nvim",
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        config = function()
+            require("aoof.config.trouble")
+        end,
+    },
+
+    -- Highlight and search TODO/FIX/HACK/NOTE comments
+    {
+        "folke/todo-comments.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            require("aoof.config.todo-comments")
+        end,
+    },
+
     -- Discord Rich Presence
     {
         "andweeb/presence.nvim",
@@ -44,11 +96,29 @@ return {
         end,
     },
 
+    -- Mason installs supported servers/tools; unsupported custom servers can
+    -- still be installed externally on PATH.
+    "williamboman/mason.nvim",
+    {
+        "williamboman/mason-lspconfig.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+            "WhoIsSethDaniel/mason-tool-installer.nvim",
+        },
+        config = function()
+            require("aoof.config.mason")
+        end,
+    },
+    {
+        "WhoIsSethDaniel/mason-tool-installer.nvim",
+        dependencies = { "williamboman/mason.nvim" },
+    },
+
     -- LSP server configurations and root-dir detection
-    -- Servers must be installed on the system PATH (use your OS package
-    -- manager, npm, pip, cargo, etc. — Mason is not used).
     {
         "neovim/nvim-lspconfig",
+        dependencies = { "williamboman/mason-lspconfig.nvim" },
         config = function()
             require("aoof.config.lsp")
         end,

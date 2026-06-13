@@ -77,7 +77,7 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 
 -- Git
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gg", vim.cmd.Git, { desc = "Git status" })
 
 -- Undo tree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)

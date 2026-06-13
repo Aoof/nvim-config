@@ -86,8 +86,8 @@ vim.lsp.config("gdscript", {
 
 -- Language servers.
 -- nvim-lspconfig provides the default cmd/filetypes/root_dir for each.
--- Each server must be installed on your system PATH — install via npm, pip,
--- cargo, your OS package manager, etc.
+-- Mason installs supported servers and adds them to PATH; custom or
+-- unsupported servers can still be installed with external tooling.
 vim.lsp.enable({
     "vuels",          -- Vue
     "yamlls",         -- YAML
