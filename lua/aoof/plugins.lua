@@ -127,13 +127,10 @@ return {
     -- Time tracking
     "wakatime/vim-wakatime",
 
-    -- Panda theme
     {
-        "markvincze/panda-vim",
-        lazy = false,
+        "folke/snacks.nvim",
         priority = 1000,
-        config = function()
-            vim.cmd.colorscheme("panda")
-        end,
-    },
+        lazy = false,
+        opts = { }
+    }
 }
