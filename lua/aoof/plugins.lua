@@ -56,6 +56,8 @@ return {
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
         },
+        lazy = false,
+        priority = 1000,
         config = function()
             require("aoof.config.neotree")
         end,

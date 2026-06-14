@@ -88,18 +88,6 @@ vim.keymap.set("i", "<CR>", function()
     return vim.api.nvim_replace_termcodes("<CR>", true, false, true)
 end, { expr = true })
 
--- Snippet navigation (vim.snippet is native in Neovim 0.10+)
-vim.keymap.set({ "i", "s" }, "<Tab>", function()
-    if vim.snippet.active({ direction = 1 }) then
-        vim.snippet.jump(1)
-    end
-end)
-
-vim.keymap.set({ "i", "s" }, "<S-Tab>", function()
-    if vim.snippet.active({ direction = -1 }) then
-        vim.snippet.jump(-1)
-    end
-end)
 
 -- Window navigation from terminal / insert / normal mode (Alt + hjkl)
 vim.keymap.set("t", "<A-h>", "<C-\\><C-N><C-w>h")
