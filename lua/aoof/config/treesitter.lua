@@ -1,7 +1,8 @@
-local ok, configs = pcall(require, "nvim-treesitter.configs")
-if not ok then return end
+local ok, config = pcall(require, "nvim-treesitter.config")
+if not ok then return end;
 
-configs.setup({
+config.setup({
+    install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "/site"),
     ensure_installed = {
         "svelte", "javascript", "typescript", "tsx",
         "c", "cpp",
