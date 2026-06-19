@@ -25,6 +25,10 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("aoof.plugins", {
+    spec = {
+        "LazyVim/LazyVim",
+        import = "lazyvim.plugins",
+    },
     change_detection = {
         notify = false,
     },
