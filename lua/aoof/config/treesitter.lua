@@ -1,8 +1,7 @@
 local ok, config = pcall(require, "nvim-treesitter.config")
-if not ok then return end;
 
 config.setup({
-    install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "/site"),
+    install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
     ensure_installed = {
         "svelte", "javascript", "typescript", "tsx",
         "c", "cpp",
@@ -22,9 +21,17 @@ config.setup({
 
     highlight = {
         enable                            = true,
-        additional_vim_regex_highlighting = false,
     },
 
     -- Treesitter-based indentation (replaces smartindent for supported langs)
     indent = { enable = true },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "svelte", "javascript", "typescript", "tsx", "c", "cpp",
+                "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
+                "python", "rust", "json", "yaml", "toml", "html", "css", "bash" },
+    callback = function()
+        vim.treesitter.start()
+    end,
 })

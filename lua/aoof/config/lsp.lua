@@ -84,11 +84,6 @@ vim.lsp.config("gdscript", {
     end,
 })
 
-vim.lsp.config('svelte', {
-    filetypes = { 'svelte' },
-    capabilities = vim.lsp.protocol.make_client_capabilities()
-})
-
 -- Language servers.
 -- nvim-lspconfig provides the default cmd/filetypes/root_dir for each.
 -- Mason installs supported servers and adds them to PATH; custom or
