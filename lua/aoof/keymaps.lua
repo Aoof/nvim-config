@@ -14,7 +14,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 
 -- LSP: restart all active clients
-vim.keymap.set("n", "<leader>zig", "<cmd>LspRestart<cr>")
+vim.keymap.set("n", "<leader>zig", "<cmd>lsp restart<cr>")
 
 -- Paste without overwriting the unnamed register
 vim.keymap.set("x", "<leader>p", [["_dP]])

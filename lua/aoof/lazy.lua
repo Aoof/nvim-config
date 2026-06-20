@@ -33,3 +33,14 @@ require("lazy").setup("aoof.plugins", {
         notify = false,
     },
 })
+
+local root_markers = { '.git', 'Makefile', 'package.json', 'Cargo.toml' }
+
+vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+        local root = vim.fs.root(0, root_markers)
+        if root then
+            vim.fn.chdir(root)
+        end
+    end,
+})
