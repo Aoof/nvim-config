@@ -1,7 +1,9 @@
-local ok, config = pcall(require, "nvim-treesitter.config")
+local ok, configs = pcall(require, "nvim-treesitter.configs")
 
-config.setup({
+configs.setup({
     install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
+    ignore_install = {},
+    modules = {},
     ensure_installed = {
         "svelte", "javascript", "typescript", "tsx",
         "c", "cpp",
