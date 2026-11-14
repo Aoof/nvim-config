@@ -1,39 +1,34 @@
-local ok, configs = pcall(require, "nvim-treesitter.configs")
+local parsers = {
+    "svelte", "javascript", "typescript", "tsx",
+    "c", "cpp",
+    "lua", "vim", "vimdoc", "query",
+    "markdown", "markdown_inline",
+    "python",
+    "rust",
+    "json", "yaml", "toml",
+    "html", "css",
+    "bash",
+}
 
-configs.setup({
+local ts = require("nvim-treesitter")
+
+-- Parser installation directory
+ts.setup({
     install_dir = vim.fs.joinpath(vim.fn.stdpath("data"), "site"),
-    ignore_install = {},
-    modules = {},
-    ensure_installed = {
-        "svelte", "javascript", "typescript", "tsx",
-        "c", "cpp",
-        "lua", "vim", "vimdoc", "query",
-        "markdown", "markdown_inline",
-        "python",
-        "rust",
-        "json", "yaml", "toml",
-        "html", "css",
-        "bash",
-    },
-
-    -- Install parsers synchronously only on explicit :TSInstall
-    sync_install = false,
-    -- Auto-install missing parsers when opening a buffer
-    auto_install  = true,
-
-    highlight = {
-        enable                            = true,
-    },
-
-    -- Treesitter-based indentation (replaces smartindent for supported langs)
-    indent = { enable = true },
 })
 
+-- Install all configured parsers asynchronously.
+ts.install(parsers)
+
+-- Enable Treesitter features for supported filetypes.
 vim.api.nvim_create_autocmd("FileType", {
-    pattern = { "svelte", "javascript", "typescript", "tsx", "c", "cpp",
-                "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline",
-                "python", "rust", "json", "yaml", "toml", "html", "css", "bash" },
-    callback = function()
-        vim.treesitter.start()
+    pattern = parsers,
+    callback = function(ev)
+        -- Syntax highlighting
+        vim.treesitter.start(ev.buf)
+
+        -- Treesitter indentation
+        vim.bo[ev.buf].indentexpr =
+        "v:lua.require'nvim-treesitter'.indentexpr()"
     end,
 })
