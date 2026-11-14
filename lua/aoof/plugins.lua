@@ -119,9 +119,6 @@ return {
         end,
     },
 
-    -- Time tracking
-    "wakatime/vim-wakatime",
-
     -- Utilities
     {
         "folke/snacks.nvim",
