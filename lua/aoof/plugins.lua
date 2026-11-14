@@ -91,14 +91,6 @@ return {
         end,
     },
 
-    -- Discord Rich Presence
-    {
-        "andweeb/presence.nvim",
-        config = function()
-            require("aoof.config.presence")
-        end,
-    },
-
     -- Mason installs supported servers/tools; unsupported custom servers can
     -- still be installed externally on PATH.
     "williamboman/mason.nvim",
@@ -138,13 +130,10 @@ return {
         opts = { }
     },
 
-    -- Theme
+    -- Flatten
     {
-        "scottmckendry/cyberdream.nvim",
+        "willothy/flatten.nvim",
         lazy = false,
-        priority = 1000,
-        config = function()
-            vim.cmd.colorscheme("cyberdream")
-        end,
-    },
+        priority = 1000
+    }
 }

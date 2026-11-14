@@ -36,3 +36,5 @@ vim.opt.completeopt = {"menu", "menuone", "noselect"}
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 
 vim.o.autochdir = true
+
+vim.cmd.colorscheme("peachpuff")
